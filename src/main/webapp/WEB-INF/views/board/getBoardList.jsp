@@ -7,11 +7,55 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	.pagination { 
+		list-style: none;
+		width: 100%;
+		display: inline-block;
+	}
+	
+	.pagination_button {
+		float: left;
+		margin-left: 5px;
+	}
+</style>
 </head>
 <body>
 	<jsp:include page="${pageContext.request.contextPath }/header.jsp"></jsp:include>
 	<div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
 		<h3>게시글 목록</h3>
+		<form id="searchForm" action="/board/getBoardList.do" method="post">
+			<table border="1" style="width: 700px; boarder-collapse: collapse;">
+				<tr>
+					<td align="right">
+						<select name="searchCondition">
+							<option value="all"
+								<c:if test="${searchCondition eq 'all' || searchCondition eq '' || searchCondition eq null}">
+									selected="selected"
+								</c:if>
+							>전체</option>
+							<option value="title"
+								<c:if test="${searchCondition eq 'title' }">
+									selected="selected"
+								</c:if>
+							>제목</option>
+							<option value="content"
+								<c:if test="${searchCondition eq 'content' }">
+									selected="selected"
+								</c:if>
+							>내용</option>
+							<option value="writer"
+								<c:if test="${searchCondition eq 'writer' }">
+									selected="selected"
+								</c:if>
+							>작성자</option>
+						</select>
+						<input type="text" name="searchKeyword" value="${searchKeyword }">
+						<button type="submit" id="btnSearch">검색</button>
+					</td>
+				</tr>
+			</table>
+		</form>
 		<table id="boardTable" border="1" style="width: 700px; border-collapse: collapse;">
 			<tr>
 				<th style="backgrond: skyblue; width: 100px;">번호</th>
@@ -34,6 +78,28 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<br/>
+		<div style="text-align: center;">
+			<ul class="pagination">
+				<c:if test="${pageVO.prev }">
+					<li class="pagination_button">
+						<a href="#">이전</a>
+					</li>
+				</c:if>	
+				
+				<c:forEach var="num" begin="${pageVO.startPage }" end="${pageVO.endPage }">
+					<li class="pagination_button">
+						<a href="${num }">${num }</a>
+					</li>
+				</c:forEach>		
+				
+				<c:if test="${pageVO.next }">
+					<li class="pagination_button">
+						<a href="#">다음</a>
+					</li>				
+				</c:if>
+			</ul>
+		</div>
 		<br/>
 		<a href="/board/insertBoard.do">새 글 등록</a>
 	</div>

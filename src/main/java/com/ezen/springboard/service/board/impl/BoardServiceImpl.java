@@ -1,12 +1,14 @@
 package com.ezen.springboard.service.board.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ezen.springboard.service.board.BoardService;
 import com.ezen.springboard.vo.BoardVO;
+import com.ezen.springboard.vo.Criteria;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -19,8 +21,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public List<BoardVO> getBoardList() {
-		return boardDAO.getBoardList();
+	public List<BoardVO> getBoardList(Map<String, String> paramMap, Criteria cri) {
+		return boardDAO.getBoardList(paramMap, cri);
 	}
 	
 	@Override
@@ -36,5 +38,15 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void updateBoard(BoardVO boardVO) {
 		boardDAO.updateBoard(boardVO);
+	}
+	
+	@Override
+	public void deleteBoard(int boardNo) {
+		boardDAO.deleteBoard(boardNo);
+	}
+	
+	@Override
+	public int getBoardTotalCnt(Map<String, String> paramMap) {
+		return boardDAO.getBoardTotalCnt(paramMap);
 	}
 }
