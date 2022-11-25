@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <script src="js/jquery-3.6.0.min.js"></script> 이렇게 헤드에 작성하면 모든 페이지에 적용 가능 -->
 </head>
 <body>
 	<jsp:include page="./header.jsp"></jsp:include>

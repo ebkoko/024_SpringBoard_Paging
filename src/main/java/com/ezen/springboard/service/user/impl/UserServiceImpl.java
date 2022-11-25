@@ -25,4 +25,15 @@ public class UserServiceImpl implements UserService {
 	public UserVO login(UserVO userVO) {
 		return userDAO.login(userVO);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

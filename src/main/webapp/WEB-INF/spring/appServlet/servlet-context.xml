@@ -21,7 +21,8 @@
 	<resources mapping="/upload/**" location="/upload/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<!-- 컨트롤러 메소드에서 리턴할 때 responseBody가 항상 HTML화 되는데 String 리턴했을 때 해당 jsp를 찾아줌 -->
+	<!-- 컨트롤러 메소드에서 리턴할 때 responseBody가 항상 HTML화 되는데 String 리턴했을 때 
+		 해당 jsp를 찾아줌-->
 	<!-- 만약 return "aa"; => /WEB-INF/views/aa.jsp -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />

@@ -70,17 +70,37 @@
 	
 	<script>
 		$(function() {
-			// 세션, 리퀘스트 스코프에 담겨진 데이터를 빼오는 방식
+			//세션, 리퀘스트 스코프에 담겨진 데이터를 빼오는 방식
 			const loginUserId = '${loginUser.userId}';
 			const boardWriter = '${board.boardWriter}';
 			
-			// 게시글 작성자와 로그인 유저가 다르면 게시글 수정 못하게 설정
-			if(loginUserId != boardWriter) {
+			//게시글 작성자와 로그인 유저가 다르면 게시글 수정 못하게 설정
+			if(loginUserId !== boardWriter) {
 				$("#btnWrap").hide();
 				$("#deleteBtn").hide();
 				$("#boardTitle").attr("readonly", true);
 				$("#boardContent").attr("readonly", true);
 			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 		});
 	</script>
 </body>

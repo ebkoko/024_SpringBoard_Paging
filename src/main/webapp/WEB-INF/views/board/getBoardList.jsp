@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	.pagination { 
+	.pagination {
 		list-style: none;
 		width: 100%;
 		display: inline-block;
@@ -25,7 +25,9 @@
 	<div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
 		<h3>게시글 목록</h3>
 		<form id="searchForm" action="/board/getBoardList.do" method="post">
-			<table border="1" style="width: 700px; boarder-collapse: collapse;">
+			<input type="hidden" name="pageNum" value="${pageVO.cri.pageNum }">
+			<input type="hidden" name="amount" value="${pageVO.cri.amount }">
+			<table border="1" style="width: 700px; border-collapse: collapse;">
 				<tr>
 					<td align="right">
 						<select name="searchCondition">
@@ -51,11 +53,12 @@
 							>작성자</option>
 						</select>
 						<input type="text" name="searchKeyword" value="${searchKeyword }">
-						<button type="submit" id="btnSearch">검색</button>
+						<button type="button" id="btnSearch">검색</button>
 					</td>
 				</tr>
 			</table>
 		</form>
+		
 		<table id="boardTable" border="1" style="width: 700px; border-collapse: collapse;">
 			<tr>
 				<th style="backgrond: skyblue; width: 100px;">번호</th>
@@ -79,24 +82,24 @@
 			</c:forEach>
 		</table>
 		<br/>
-		<div style="text-align: center;">
+		<div style="text-align:center;">
 			<ul class="pagination">
 				<c:if test="${pageVO.prev }">
 					<li class="pagination_button">
-						<a href="#">이전</a>
+						<a href="${pageVO.cri.pageNum - 1 }">이전</a>
 					</li>
-				</c:if>	
+				</c:if>
 				
 				<c:forEach var="num" begin="${pageVO.startPage }" end="${pageVO.endPage }">
 					<li class="pagination_button">
 						<a href="${num }">${num }</a>
 					</li>
-				</c:forEach>		
+				</c:forEach>
 				
 				<c:if test="${pageVO.next }">
 					<li class="pagination_button">
-						<a href="#">다음</a>
-					</li>				
+						<a href="${pageVO.cri.pageNum + 1 }">다음</a>
+					</li>
 				</c:if>
 			</ul>
 		</div>
@@ -107,8 +110,36 @@
 	
 	<script>
 		$(function() {
+			$(".pagination a").on("click", function(e) {
+				e.preventDefault(); // a 태그의 원래 기능 막음
+				
+				$("input[name='pageNum']").val($(this).attr("href"));
+				$("#searchForm").submit();
+			});
 			
+			$("#btnSearch").on("click", function() {
+				$("input[name='pageNum']").val(1);
+				
+				$("#searchForm").submit();
+			});
 		});
 	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </body>
 </html>

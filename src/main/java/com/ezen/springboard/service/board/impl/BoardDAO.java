@@ -31,6 +31,8 @@ public class BoardDAO {
 		return mybatis.selectList("BoardDAO.getBoardList", pMap);
 	}
 	
+	
+	
 	public BoardVO getBoard(int boardNo) {
 		return mybatis.selectOne("BoardDAO.getBoard", boardNo);
 	}
@@ -50,4 +52,16 @@ public class BoardDAO {
 	public int getBoardTotalCnt(Map<String, String> paramMap) {
 		return mybatis.selectOne("BoardDAO.getBoardTotalCnt", paramMap);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

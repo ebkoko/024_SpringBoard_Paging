@@ -20,6 +20,7 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.insertBoard(boardVO);
 	}
 	
+	
 	@Override
 	public List<BoardVO> getBoardList(Map<String, String> paramMap, Criteria cri) {
 		return boardDAO.getBoardList(paramMap, cri);
@@ -49,4 +50,12 @@ public class BoardServiceImpl implements BoardService {
 	public int getBoardTotalCnt(Map<String, String> paramMap) {
 		return boardDAO.getBoardTotalCnt(paramMap);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 }

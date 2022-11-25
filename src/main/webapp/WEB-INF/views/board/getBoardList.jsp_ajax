@@ -43,14 +43,14 @@
 					console.log(obj);
 					let data = JSON.parse(obj);
 					
-					let htmlStr ="";
+					let htmlStr = "";
 					
-					for(let i=0; i< data.boardList.length; i++) {
+					for(let i = 0; i < data.boardList.length; i++) {
 						htmlStr += "<tr class='dataTr'>";
 						htmlStr += "<td>" + data.boardList[i].boardNo + "</td>";
 						htmlStr += "<td>";
-						htmlStr += "	<a href='/board/getBoard.do?boardNo=" + data.boardList[i].boardNo 
-								+ "'>" + data.boardList[i].boardTitle + "</a>";
+						htmlStr += "	<a href='/board/getBoard.do?boardNo=" + data.boardList[i].boardNo + 
+										"'>" + data.boardList[i].boardTitle + "</a>";
 						htmlStr += "</td>";
 						htmlStr += "<td>" + data.boardList[i].boardWriter + "</td>";
 						htmlStr += "<td>" + data.boardList[i].boardRegdate + "</td>";
@@ -61,6 +61,9 @@
 					$(".dataTr").remove();
 					$("#boardTable").append(htmlStr);
 					
+					
+					
+					
 				},
 				error: function(e) {
 					console.log(e);
@@ -68,5 +71,22 @@
 			});
 		});
 	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </body>
 </html>

@@ -60,4 +60,16 @@ public class UserVO {
 				+ ", userTel=" + userTel + ", userRegdate=" + userRegdate + ", userRole=" + userRole + "]";
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

@@ -1,15 +1,15 @@
 package com.ezen.springboard.vo;
 
 public class Criteria {
-	// 현재 보고있는 페이지 번호
+	//현재 보고있는 페이지 번호
 	private int pageNum;
-	// 한 페이지에 표출할 게시글의 개수
+	//한 페이지 표출할 게시글의 개수
 	private int amount;
-	// 페이지 표출 시작 번호
+	//페이지 표출 시작 번호
 	private int startNum;
 	
 	public Criteria() {
-		// 페이지번호랑 개수를 지정 안했을 때(1페이지에 10개씩 보이도록 설정)
+		//페이지번호랑 개수를 지정안했을 때
 		this(1, 10);
 	}
 	
@@ -46,4 +46,13 @@ public class Criteria {
 	public String toString() {
 		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", startNum=" + startNum + "]";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

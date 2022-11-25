@@ -63,7 +63,7 @@
 				<label for="userPwCheck">비밀번호 확인</label>
 			</div>
 			<input type="password" id="userPwCheck" name="userPwCheck" required>
-			<p id="pwCheckResult" style="font-size: 0.8rem"></p>
+			<p id="pwCheckResult" style="font-size: 0.8rem;"></p>
 			<div class="label-wrapper">
 				<label for="userNm">이름</label>
 			</div>
@@ -85,44 +85,46 @@
 	
 	<script>
 		$(function() {
-			// 회원가입 실패 시 메세지 출력
+			//회원가입 실패 시 메시지 출력
 			if($("#joinMsg").val() != "" && $("#joinMsg").val() != null) {
 				alert($("#joinMsg").val());
 			}
 			
-			// id 중복체크 했는지 확인하는 플래그
+			//id 중복체크 했는지 확인하는 플래그
 			var checkId = false;
-			// password가 형식에 맞게 작성됐는지(특수문자 + 영문자 + 숫자 8자리)
+			//password가 형식에 맞게 작성됐는지(특수문자 + 영문자 + 숫자 8자리)
 			var pwValidation = false;
-			// password 확인란과 일치하는지
+			//password가 확인란과 일치하는지
 			var pwCheck = false;
 			
 			$("#pwValidation").hide();
 			$("#pwCheckResult").hide();
 			
-			// id 중복체크
+			//id 중복체크
 			$("#btnIdCheck").on("click", function() {
 				/* $.ajax({
 					url: '/user/test.do',
 					type: 'post',
-					data: $("#joinForm").serialize(), // 폼의 데이터를 한 번에 보낼 수 있음
+					data: $("#joinForm").serialize(),
 					success: function(obj) {
-						// json문자열로 온다.
+						//json문자열로 온다.
 						console.log(obj);
-						// json문자열을 json으로 변환
-						var jsonObj = JSON.parse(obj);						
-						console.log(jsonObj.firstName);			
-						console.log(jsonObj.lastName);			
-						console.log(jsonObj.user);			
+						
+						//json문자열을 json으로 변환
+						var jsonObj = JSON.parse(obj);
+						console.log(jsonObj.firstName);
+						console.log(jsonObj.lastName);
+						console.log(jsonObj.user);
 						console.log(jsonObj.user.userId);
 						console.log(jsonObj.user.userPw);
 						
-						// 동적 태그를 만들어서 가져온 데이터를 표출
+						//동적 태그를 만들어서 가져온 데이터를 표출(getBoardList에서 진행)
 					},
 					error: function(e) {
 						console.log(e);
 					}
 				}); */
+				
 				$.ajax({
 					url: "/user/idCheck.do",
 					type: "post",
@@ -134,7 +136,8 @@
 							alert("중복된 아이디입니다.");
 							$("#userId").focus();
 						} else {
-							if(confirm("사용 가능한 아이디입니다." + " " + $("#userId").val() + "를(을) 사용하시겠습니까?")) {
+							if(confirm("사용가능한 아이디입니다. " + $("#userId").val() + 
+									"를(을) 사용하시겠습니까?")) {
 								checkId = true;
 								$("#btnIdCheck").attr("disabled", true);
 							}
@@ -143,24 +146,23 @@
 					error: function(e) {
 						console.log(e);
 					}
-					
-				});
+				})
 			});
 			
-			// id 중복체크 후 다시 id를 변경했을 때
+			//id 중복체크 후 다시 id를 변경했을 때
 			$("#userId").on("change", function() {
 				checkId = false;
 				$("#btnIdCheck").attr("disabled", false);
 			});
 			
-			// 비밀번호 유효성 검사
+			//비밀번호 유효성 검사
 			function validatePassword(character) {
 				return /^(?=.*[a-zA-Z])(?=.*[!@#$%^&*+=-])(?=.*[0-9]).{9,}$/.test(character);
 			}
 			
-			// 비밀번호 입력될 때마다 유효성 검사
+			//비밀번호 입력될때마다 유효성 검사
 			$("#userPw").on("change", function() {
-				// 비밀번호 유효성 처리
+				//비밀번호 유효성 처리
 				if(!validatePassword($("#userPw").val())) {
 					pwValidation = false;
 					$("#pwValidation").show();
@@ -170,7 +172,7 @@
 					$("#pwValidation").hide();
 				}
 				
-				// 비밀번호 확인까지 입력한 후 다시 비밀번호 재설정할 때
+				//비밀번호 확인까지 입력한 후 다시 비밀번호 재설정
 				if($("#userPw").val() == $("#userPwCheck").val()) {
 					pwCheck = true;
 					$("#pwCheckResult").css("color", "green");
@@ -182,7 +184,7 @@
 				}
 			});
 			
-			// 비밀번호 확인란 입력할 때 일치여부 체크
+			//비밀번호 확인란 입력할 때 일치여부 체크
 			$("#userPwCheck").on("change", function() {
 				$("#pwCheckResult").show();
 				
@@ -197,11 +199,10 @@
 				}
 			});
 			
-			// 회원가입 진행
+			//회원가입 진행
 			$("#joinForm").on("submit", function(e) {
-				console.log(e);
-				// submit이 실행될 때 구현할 동작
-				// 아이디 중복체크가 안됐거나 중복된 아이디를 사용했을 때
+				//서브밋이 실행될 때 구현할 동작
+				//아이디 중복체크가 안됐거나 중복된 아이디를 사용했을 때
 				if(!checkId) {
 					alert("아이디 중복체크를 진행하세요.");
 					$("#userId").focus();
@@ -209,7 +210,7 @@
 					return;
 				}
 				
-				// 비밀번호 유효성 검사가 틀렸을 때
+				//비밀번호 유효성 검사가 틀렸을 때
 				if(!pwValidation) {
 					alert("비밀번호는 영문자, 숫자, 특수문자 조합의 9자리 이상으로 설정하세요.");
 					$("#userPw").focus();
@@ -217,7 +218,7 @@
 					return;
 				}
 				
-				// 비밀번호와 비밀번호 확인이 일치하지 않을 때
+				//비밀번호와 비밀번호 확인이 일치하지 않을 때
 				if(!pwCheck) {
 					alert("비밀번호가 일치하지 않습니다.");
 					$("#userPwCheck").focus();
@@ -226,6 +227,24 @@
 				}
 			});
 		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	</script>
 </body>
 </html>

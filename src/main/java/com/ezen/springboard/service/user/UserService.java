@@ -3,10 +3,10 @@ package com.ezen.springboard.service.user;
 import com.ezen.springboard.vo.UserVO;
 
 public interface UserService {
-	// id 중복체크
+	//id중복체크
 	int idCheck(String userId);
-	// 회원가입
+	//회원가입
 	int join(UserVO userVO);
-	// 로그인
+	//로그인
 	UserVO login(UserVO userVO);
 }

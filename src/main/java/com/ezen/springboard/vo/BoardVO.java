@@ -52,4 +52,14 @@ public class BoardVO {
 		return "BoardVO [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
 				+ ", boardWriter=" + boardWriter + ", boardRegdate=" + boardRegdate + ", boardCnt=" + boardCnt + "]";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
